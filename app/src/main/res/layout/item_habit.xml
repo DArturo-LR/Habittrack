@@ -1,26 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout
+<com.google.android.material.card.MaterialCardView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:padding="12dp"
-    android:layout_marginBottom="8dp"
-    android:background="#E3F2FD">
+    android:layout_marginBottom="12dp"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="4dp"
+    app:cardBackgroundColor="@color/card_bg">
 
-    <TextView
-        android:id="@+id/tvHabitName"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Nombre hábito"
-        android:textSize="18sp"
-        android:textStyle="bold"/>
+        android:orientation="vertical"
+        android:padding="16dp">
 
-    <TextView
-        android:id="@+id/tvHabitGoal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Meta: 7 días"/>
+        <!-- Nombre -->
 
-</LinearLayout>
+        <TextView
+            android:id="@+id/tvHabitName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Beber agua 💧"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="@color/text_primary"/>
+
+        <!-- Progreso -->
+
+        <TextView
+            android:id="@+id/tvHabitProgress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:text="7 de 10"
+            android:textSize="16sp"
+            android:textColor="@color/text_secondary"/>
+
+        <!-- ProgressBar -->
+
+        <ProgressBar
+            android:id="@+id/progressHabit"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:max="100"
+            android:progress="70"/>
+
+        <!-- Botón -->
+
+        <Button
+            android:id="@+id/btnCompleteHabit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="Completar"/>
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

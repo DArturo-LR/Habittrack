@@ -2,14 +2,14 @@ package com.example.habittrack.ui.view
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.habittrack.R
-import com.example.habittrack.ui.viewmodel.HabitViewModel
 import com.example.habittrack.ui.view.adapter.HabitAdapter
+import com.example.habittrack.ui.viewmodel.HabitViewModel
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
 
@@ -17,7 +17,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var adapter: HabitAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
-
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -37,11 +36,31 @@ class MainActivity : AppCompatActivity() {
 
         viewModel.loadHabits()
 
-        findViewById<Button>(R.id.btnAddHabit).setOnClickListener {
+        val bottomNav = findViewById<BottomNavigationView>(R.id.bottomNavigation)
 
-            startActivity(Intent(this, AddHabitActivity::class.java))
+        bottomNav.selectedItemId = R.id.nav_progreso
+
+        bottomNav.setOnItemSelectedListener {
+
+            when (it.itemId) {
+
+                R.id.nav_add -> {
+
+                    startActivity(Intent(this, AddHabitActivity::class.java))
+                    true
+                }
+
+                R.id.nav_progreso -> {
+                    true
+                }
+
+                else -> {
+                    true
+                }
+            }
         }
     }
+
     override fun onResume() {
         super.onResume()
         viewModel.loadHabits()
