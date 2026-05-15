@@ -21,6 +21,49 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1" />
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="8dp">
+
+            <Button
+                android:id="@+id/btnTodos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Todos"/>
+
+            <Button
+                android:id="@+id/btnSalud"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Salud"/>
+
+            <Button
+                android:id="@+id/btnEstudio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Estudio"/>
+
+            <Button
+                android:id="@+id/btnPasatiempo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pasatiempo"/>
+
+            <Button
+                android:id="@+id/btnOtros"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Otros"/>
+
+        </LinearLayout>
+
+    </HorizontalScrollView>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigation"

@@ -25,6 +25,7 @@ class AddHabitActivity : AppCompatActivity() {
 
         val nameInput = findViewById<EditText>(R.id.etName)
         val goalInput = findViewById<EditText>(R.id.etGoal)
+        val radioGroup = findViewById<android.widget.RadioGroup>(R.id.radioGroupCategory)
 
         val btnSave = findViewById<Button>(R.id.btnSave)
 
@@ -32,24 +33,30 @@ class AddHabitActivity : AppCompatActivity() {
 
             val name = nameInput.text.toString()
 
-            val goal = goalInput.text.toString().toIntOrNull() ?: 0
+            val goal = goalInput.text.toString().toInt()
 
-            if (name.isEmpty() || goal <= 0) {
+            val selectedId = radioGroup.checkedRadioButtonId
 
-                Toast.makeText(
-                    this,
-                    "Completa todos los campos",
-                    Toast.LENGTH_SHORT
-                ).show()
+            val category = when (selectedId) {
 
-                return@setOnClickListener
+                R.id.rbSalud -> "Salud"
+
+                R.id.rbEstudio -> "Estudio"
+
+                R.id.rbPasatiempo -> "Pasatiempo"
+
+                R.id.rbOtros -> "Otros"
+
+                else -> "Otros"
             }
 
             val habit = Habit(
+
                 id = System.currentTimeMillis().toString(),
                 name = name,
                 frequency = "Diario",
-                goal = goal
+                goal = goal,
+                category = category
             )
 
             viewModel.addHabit(habit)
