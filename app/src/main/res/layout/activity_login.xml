@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="#70FFE7"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="top|center_horizontal"
+    android:padding="24dp">
+    <ImageView
+        android:src="@drawable/buenos_habitos_diarios"
+        android:contentDescription="Logo HabitTrack"
+        android:layout_width="350dp"
+        android:layout_height="350dp"
+        android:layout_marginBottom="10dp"
+        android:layout_gravity="center_horizontal"/>
+
+    <TextView
+        android:text="HabitTrack"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:textColor="@color/purple"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:layout_gravity="center_horizontal"/>
+
+    <EditText
+        android:id="@+id/etEmail"
+        android:backgroundTint="@color/purple"
+        android:padding="12dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Correo"
+        android:inputType="textEmailAddress" />
+
+    <EditText
+        android:id="@+id/etPassword"
+        android:backgroundTint="@color/purple"
+        android:padding="12dp"
+        android:layout_marginTop="12dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Contraseña"
+        android:inputType="textPassword" />
+
+    <Button
+        android:id="@+id/btnLogin"
+        android:textColor="#FFFFFF"
+        android:backgroundTint="@color/purple"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Entrar" />
+
+    <Button
+        android:id="@+id/btnRegister"
+        android:textColor="#FFFFFF"
+        android:backgroundTint="@color/purple"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Registrarse" />
+
+</LinearLayout>

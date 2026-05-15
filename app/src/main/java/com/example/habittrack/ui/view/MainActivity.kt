@@ -10,6 +10,7 @@ import com.example.habittrack.R
 import com.example.habittrack.ui.view.adapter.HabitAdapter
 import com.example.habittrack.ui.viewmodel.HabitViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.auth.FirebaseAuth
 
 class MainActivity : AppCompatActivity() {
 
@@ -44,13 +45,27 @@ class MainActivity : AppCompatActivity() {
 
             when (it.itemId) {
 
+                // IR A AÑADIR HÁBITO
                 R.id.nav_add -> {
 
                     startActivity(Intent(this, AddHabitActivity::class.java))
                     true
                 }
 
+                // PANTALLA PRINCIPAL
                 R.id.nav_progreso -> {
+                    true
+                }
+
+                // LOGOUT TEMPORAL EN PERFIL
+                R.id.nav_profile -> {
+
+                    FirebaseAuth.getInstance().signOut()
+
+                    startActivity(Intent(this, LoginActivity::class.java))
+
+                    finish()
+
                     true
                 }
 
