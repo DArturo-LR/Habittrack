@@ -25,12 +25,20 @@ class HabitRepository {
 
                 for (document in result) {
 
-                    val habit = document.toObject(Habit::class.java)
+                    val habit =
+                        document.toObject(Habit::class.java)
 
                     habitsList.add(habit)
                 }
 
                 habitsLiveData.value = habitsList
             }
+    }
+
+    fun updateHabitProgress(habit: Habit) {
+
+        db.collection("habits")
+            .document(habit.id)
+            .set(habit)
     }
 }

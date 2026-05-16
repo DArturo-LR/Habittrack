@@ -18,4 +18,8 @@ class HabitViewModel : ViewModel() {
     fun loadHabits() {
         repository.getHabits(habits)
     }
+    fun updateProgress(habit: Habit) {
+
+        repository.updateHabitProgress(habit)
+    }
 }
