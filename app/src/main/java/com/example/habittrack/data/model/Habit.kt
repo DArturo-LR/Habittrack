@@ -2,6 +2,7 @@ package com.example.habittrack.data.model
 
 data class Habit(
     val id: String = "",
+    val userId: String = "",
     val name: String = "",
     val frequency: String = "",
     val goal: Int = 0,

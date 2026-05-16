@@ -3,6 +3,7 @@ package com.example.habittrack.data.repository
 import androidx.lifecycle.MutableLiveData
 import com.example.habittrack.data.model.Habit
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.auth.FirebaseAuth
 
 class HabitRepository {
 
@@ -17,7 +18,13 @@ class HabitRepository {
 
     fun getHabits(habitsLiveData: MutableLiveData<List<Habit>>) {
 
+        val userId = FirebaseAuth
+            .getInstance()
+            .currentUser
+            ?.uid
+
         db.collection("habits")
+            .whereEqualTo("userId", userId)
             .get()
             .addOnSuccessListener { result ->
 
@@ -39,6 +46,12 @@ class HabitRepository {
 
         db.collection("habits")
             .document(habit.id)
-            .set(habit)
+            .update(
+                mapOf(
+                    "progress" to habit.progress,
+                    "lastCompletedDate" to habit.lastCompletedDate,
+                    "streak" to habit.streak
+                )
+            )
     }
 }

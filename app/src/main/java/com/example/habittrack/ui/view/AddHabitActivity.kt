@@ -11,7 +11,7 @@ import com.example.habittrack.R
 import com.example.habittrack.data.model.Habit
 import com.example.habittrack.ui.viewmodel.HabitViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
-
+import com.google.firebase.auth.FirebaseAuth
 class AddHabitActivity : AppCompatActivity() {
 
     private lateinit var viewModel: HabitViewModel
@@ -50,9 +50,15 @@ class AddHabitActivity : AppCompatActivity() {
                 else -> "Otros"
             }
 
+            val userId = FirebaseAuth
+                .getInstance()
+                .currentUser
+                ?.uid ?: ""
+
             val habit = Habit(
 
                 id = System.currentTimeMillis().toString(),
+                userId = userId,
                 name = name,
                 frequency = "Diario",
                 goal = goal,

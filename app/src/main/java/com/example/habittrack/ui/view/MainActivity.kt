@@ -1,10 +1,8 @@
 package com.example.habittrack.ui.view
 
 import android.content.Intent
-import android.os.Build
 import android.os.Bundle
 import android.widget.Button
-import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -14,7 +12,14 @@ import com.example.habittrack.data.model.Habit
 import com.example.habittrack.ui.view.adapter.HabitAdapter
 import com.example.habittrack.ui.viewmodel.HabitViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import java.time.LocalDate
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
+import com.example.habittrack.ui.notification.NotificationHelper
+import android.Manifest
+import android.content.pm.PackageManager
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 
 class MainActivity : AppCompatActivity() {
 
@@ -24,12 +29,25 @@ class MainActivity : AppCompatActivity() {
 
     private var allHabits = listOf<Habit>()
 
-    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_main)
+        NotificationHelper.scheduleDailyNotification(this)
+        if (
+            ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.POST_NOTIFICATIONS
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+
+            ActivityCompat.requestPermissions(
+                this,
+                arrayOf(Manifest.permission.POST_NOTIFICATIONS),
+                1
+            )
+        }
 
         viewModel =
             ViewModelProvider(this)[HabitViewModel::class.java]
@@ -39,7 +57,7 @@ class MainActivity : AppCompatActivity() {
 
         adapter = HabitAdapter(emptyList()) { habit ->
 
-            val today = LocalDate.now().toString()
+            val today = getCurrentDate()
 
             if (
                 habit.progress < habit.goal &&
@@ -166,6 +184,7 @@ class MainActivity : AppCompatActivity() {
 
                     true
                 }
+
                 R.id.nav_stats -> {
 
                     startActivity(
@@ -181,6 +200,16 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    private fun getCurrentDate(): String {
+
+        val sdf = SimpleDateFormat(
+            "yyyy-MM-dd",
+            Locale.getDefault()
+        )
+
+        return sdf.format(Date())
     }
 
     override fun onResume() {
