@@ -166,6 +166,14 @@ class MainActivity : AppCompatActivity() {
 
                     true
                 }
+                R.id.nav_stats -> {
+
+                    startActivity(
+                        Intent(this, StatsActivity::class.java)
+                    )
+
+                    true
+                }
 
                 else -> {
 

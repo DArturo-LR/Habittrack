@@ -39,6 +39,7 @@
             android:name=".ui.view.AddHabitActivity"
             android:exported="false"
             android:theme="@style/Theme.Habittrack" />
+        <activity android:name=".ui.view.StatsActivity"/>
 
     </application>
 

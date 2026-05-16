@@ -82,6 +82,16 @@ class AddHabitActivity : AppCompatActivity() {
                 R.id.nav_add -> {
                     true
                 }
+                R.id.nav_stats -> {
+
+                    startActivity(
+                        Intent(this, StatsActivity::class.java)
+                    )
+
+                    finish()
+
+                    true
+                }
 
                 else -> {
                     true
