@@ -13,7 +13,7 @@
         android:id="@+id/tvHabitName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hábito"
+        android:text="@string/habit"
         android:textSize="20sp"
         android:textStyle="bold"/>
 
@@ -21,13 +21,13 @@
         android:id="@+id/tvCategory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Categoría"/>
+        android:text="@string/category"/>
 
     <TextView
         android:id="@+id/tvProgress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="0 / 5 días"
+        android:text="0 / 5"
         android:textSize="16sp"
         android:paddingTop="6dp"/>
 
@@ -44,7 +44,7 @@
         android:id="@+id/btnCompleteDay"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Completar día"
+        android:text="@string/complete_day"
         android:layout_marginTop="10dp"/>
 
 </LinearLayout>

@@ -22,4 +22,13 @@ class HabitViewModel : ViewModel() {
 
         repository.updateHabitProgress(habit)
     }
+    fun deleteHabit(habitId: String) {
+
+        repository.deleteHabit(habitId)
+    }
+
+    fun updateHabit(habit: Habit) {
+
+        repository.updateHabit(habit)
+    }
 }

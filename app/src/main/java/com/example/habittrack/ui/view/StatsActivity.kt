@@ -84,6 +84,23 @@ class StatsActivity : AppCompatActivity() {
                 R.id.nav_stats -> {
                     true
                 }
+                R.id.nav_profile -> {
+
+                    startActivity(
+                        Intent(this, ProfileActivity::class.java)
+                    )
+
+                    true
+                }
+
+                R.id.nav_reminders -> {
+
+                    startActivity(
+                        Intent(this, RemindersActivity::class.java)
+                    )
+
+                    true
+                }
 
                 else -> {
                     true

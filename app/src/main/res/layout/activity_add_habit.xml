@@ -18,19 +18,19 @@
             android:id="@+id/etName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Nombre del hábito"/>
+            android:hint="@string/habit_name"/>
 
         <EditText
             android:id="@+id/etGoal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Meta en días"
+            android:hint="@string/goal_days"
             android:inputType="number"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Categoría"
+            android:text="@string/category"
             android:textSize="18sp"
             android:paddingTop="16dp"
             android:paddingBottom="8dp"/>
@@ -44,25 +44,25 @@
                 android:id="@+id/rbSalud"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Salud"/>
+                android:text="@string/health"/>
 
             <RadioButton
                 android:id="@+id/rbEstudio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Estudio"/>
+                android:text="@string/study"/>
 
             <RadioButton
                 android:id="@+id/rbPasatiempo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Pasatiempo"/>
+                android:text="@string/hobby"/>
 
             <RadioButton
                 android:id="@+id/rbOtros"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Otros"/>
+                android:text="@string/others"/>
 
         </RadioGroup>
 
@@ -70,7 +70,7 @@
             android:id="@+id/btnSave"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Guardar hábito"
+            android:text="@string/save_habit"
             android:layout_marginTop="20dp"/>
 
     </LinearLayout>

@@ -42,6 +42,9 @@
             android:exported="false"
             android:theme="@style/Theme.Habittrack" />
         <activity android:name=".ui.view.StatsActivity"/>
+        <activity android:name=".ui.view.EditHabitActivity"/>
+        <activity android:name=".ui.view.ProfileActivity"/>
+        <activity android:name=".ui.view.RemindersActivity"/>
 
         <receiver
             android:name=".ui.notification.NotificationReceiver"

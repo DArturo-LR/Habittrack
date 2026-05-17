@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -10,7 +11,7 @@
         android:id="@+id/tvTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Tus hábitos"
+        android:text="@string/your_habits"
         android:textSize="24sp"
         android:textStyle="bold"
         android:padding="16dp"
@@ -21,6 +22,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1" />
+
     <HorizontalScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -35,31 +37,31 @@
                 android:id="@+id/btnTodos"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Todos"/>
+                android:text="@string/all"/>
 
             <Button
                 android:id="@+id/btnSalud"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Salud"/>
+                android:text="@string/health"/>
 
             <Button
                 android:id="@+id/btnEstudio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Estudio"/>
+                android:text="@string/study"/>
 
             <Button
                 android:id="@+id/btnPasatiempo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Pasatiempo"/>
+                android:text="@string/hobby"/>
 
             <Button
                 android:id="@+id/btnOtros"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Otros"/>
+                android:text="@string/others"/>
 
         </LinearLayout>
 

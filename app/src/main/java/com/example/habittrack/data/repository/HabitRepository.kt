@@ -41,6 +41,19 @@ class HabitRepository {
                 habitsLiveData.value = habitsList
             }
     }
+    fun deleteHabit(habitId: String) {
+
+        db.collection("habits")
+            .document(habitId)
+            .delete()
+    }
+
+    fun updateHabit(habit: Habit) {
+
+        db.collection("habits")
+            .document(habit.id)
+            .set(habit)
+    }
 
     fun updateHabitProgress(habit: Habit) {
 

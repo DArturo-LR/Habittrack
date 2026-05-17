@@ -20,6 +20,7 @@ import android.Manifest
 import android.content.pm.PackageManager
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import kotlin.jvm.java
 
 class MainActivity : AppCompatActivity() {
 
@@ -55,38 +56,79 @@ class MainActivity : AppCompatActivity() {
         val recyclerView =
             findViewById<RecyclerView>(R.id.recyclerHabits)
 
-        adapter = HabitAdapter(emptyList()) { habit ->
+        adapter = HabitAdapter(
 
-            val today = getCurrentDate()
+            emptyList(),
 
-            if (
-                habit.progress < habit.goal &&
-                habit.lastCompletedDate != today
-            ) {
+            { habit ->
 
-                val updatedHabit = habit.copy(
+                val today = getTodayDate()
 
-                    progress = habit.progress + 1,
+                if (
+                    habit.progress < habit.goal &&
+                    habit.lastCompletedDate != today
+                ) {
 
-                    lastCompletedDate = today,
+                    val updatedHabit = habit.copy(
 
-                    streak = habit.streak + 1
-                )
+                        progress = habit.progress + 1,
 
-                viewModel.updateProgress(updatedHabit)
+                        lastCompletedDate = today,
 
-                allHabits = allHabits.map {
+                        streak = habit.streak + 1
+                    )
 
-                    if (it.id == updatedHabit.id) {
-                        updatedHabit
-                    } else {
-                        it
+                    viewModel.updateProgress(updatedHabit)
+
+                    allHabits = allHabits.map {
+
+                        if (it.id == updatedHabit.id) {
+
+                            updatedHabit
+
+                        } else {
+
+                            it
+                        }
                     }
-                }
 
-                adapter.updateData(allHabits)
+                    adapter.updateData(allHabits)
+                }
+            },
+
+            { habit ->
+
+                val options = arrayOf("Editar", "Eliminar")
+
+                androidx.appcompat.app.AlertDialog.Builder(this)
+                    .setTitle(habit.name)
+                    .setItems(options) { _, which ->
+
+                        when (which) {
+
+                            0 -> {
+
+                                val intent = Intent(
+                                    this,
+                                    EditHabitActivity::class.java
+                                )
+
+                                intent.putExtra("habitId", habit.id)
+
+                                startActivity(intent)
+                            }
+
+                            1 -> {
+
+                                viewModel.deleteHabit(habit.id)
+
+                                viewModel.loadHabits()
+                            }
+                        }
+                    }
+                    .show()
             }
-        }
+        )
 
         recyclerView.layoutManager =
             LinearLayoutManager(this)
@@ -170,11 +212,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.nav_add -> {
 
                     startActivity(
-
-                        Intent(
-                            this,
-                            AddHabitActivity::class.java
-                        )
+                        Intent(this, AddHabitActivity::class.java)
                     )
 
                     true
@@ -194,22 +232,27 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
 
-                else -> {
+                R.id.nav_profile -> {
+
+                    startActivity(
+                        Intent(this, ProfileActivity::class.java)
+                    )
 
                     true
                 }
+
+                R.id.nav_reminders -> {
+
+                    startActivity(
+                        Intent(this, RemindersActivity::class.java)
+                    )
+
+                    true
+                }
+
+                else -> true
             }
         }
-    }
-
-    private fun getCurrentDate(): String {
-
-        val sdf = SimpleDateFormat(
-            "yyyy-MM-dd",
-            Locale.getDefault()
-        )
-
-        return sdf.format(Date())
     }
 
     override fun onResume() {
@@ -217,5 +260,14 @@ class MainActivity : AppCompatActivity() {
         super.onResume()
 
         viewModel.loadHabits()
+    }
+    private fun getTodayDate(): String {
+
+        val sdf = SimpleDateFormat(
+            "yyyy-MM-dd",
+            Locale.getDefault()
+        )
+
+        return sdf.format(Date())
     }
 }

@@ -14,7 +14,8 @@ import com.example.habittrack.data.model.Habit
 
 class HabitAdapter(
     private var habits: List<Habit>,
-    private val onProgressClick: (Habit) -> Unit
+    private val onProgressClick: (Habit) -> Unit,
+    private val onLongClick: (Habit) -> Unit
 ) : RecyclerView.Adapter<HabitAdapter.HabitViewHolder>() {
 
     class HabitViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -57,23 +58,39 @@ class HabitAdapter(
 
         if (habit.progress >= habit.goal) {
 
-            holder.btnCompleteDay.text = "Completado"
+            holder.btnCompleteDay.text =
+                holder.itemView.context.getString(
+                    R.string.completed
+                )
             holder.btnCompleteDay.isEnabled = false
 
         } else if (habit.lastCompletedDate == today) {
 
-            holder.btnCompleteDay.text = "Ya completado hoy"
+            holder.btnCompleteDay.text =
+                holder.itemView.context.getString(
+                    R.string.completed_today
+                )
+
             holder.btnCompleteDay.isEnabled = false
 
         } else {
 
-            holder.btnCompleteDay.text = "Completar día"
+            holder.btnCompleteDay.text =
+                holder.itemView.context.getString(
+                    R.string.complete_day
+                )
             holder.btnCompleteDay.isEnabled = true
         }
 
         holder.btnCompleteDay.setOnClickListener {
 
             onProgressClick(habit)
+        }
+        holder.itemView.setOnLongClickListener {
+
+            onLongClick(habit)
+
+            true
         }
     }
 
