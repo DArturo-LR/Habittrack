@@ -35,7 +35,15 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_main)
-        NotificationHelper.scheduleDailyNotification(this)
+        val sharedPreferences =
+            getSharedPreferences("reminders", MODE_PRIVATE)
+
+        val savedHour =
+            sharedPreferences.getInt("hour", 20)
+
+        val savedMinute =
+            sharedPreferences.getInt("minute", 0)
+
         if (
             ContextCompat.checkSelfPermission(
                 this,

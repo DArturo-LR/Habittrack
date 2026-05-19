@@ -158,6 +158,14 @@ class ProfileActivity : AppCompatActivity() {
 
                     true
                 }
+                R.id.nav_reminders -> {
+
+                    startActivity(
+                        Intent(this, RemindersActivity::class.java)
+                    )
+
+                    true
+                }
 
                 else -> true
             }

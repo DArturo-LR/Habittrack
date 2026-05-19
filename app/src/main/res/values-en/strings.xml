@@ -58,4 +58,9 @@
     <string name="login_button">Login</string>
     <string name="register_button">Register</string>
     <string name="logo_description">HabitTrack Logo</string>
+
+    <string name="reminder_name">Reminder name</string>
+    <string name="new_reminder">New reminder</string>
+    <string name="continue_text">Continue</string>
+    <string name="cancel">Cancel</string>
 </resources>

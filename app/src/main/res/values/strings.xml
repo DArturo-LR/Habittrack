@@ -56,4 +56,9 @@
     <string name="register_button">Registrarse</string>
     <string name="logo_description">Logo HabitTrack</string>
 
+    <string name="reminder_name">Nombre del recordatorio</string>
+    <string name="new_reminder">Nuevo recordatorio</string>
+    <string name="continue_text">Continuar</string>
+    <string name="cancel">Cancelar</string>
+
 </resources>

@@ -14,7 +14,10 @@ import com.example.habittrack.ui.view.MainActivity
 
 class NotificationReceiver : BroadcastReceiver() {
 
-    override fun onReceive(context: Context, intent: Intent?) {
+    override fun onReceive(
+        context: Context,
+        intent: Intent?
+    ) {
 
         val channelId = "habit_channel"
 
@@ -34,41 +37,68 @@ class NotificationReceiver : BroadcastReceiver() {
             manager.createNotificationChannel(channel)
         }
 
+        val reminderTitle =
+            intent?.getStringExtra(
+                "REMINDER_TITLE"
+            ) ?: "HabitTrack"
+
         val openIntent = Intent(
             context,
             MainActivity::class.java
         )
 
-        val pendingIntent = PendingIntent.getActivity(
-            context,
-            0,
-            openIntent,
-            PendingIntent.FLAG_IMMUTABLE
-        )
+        val pendingIntent =
+            PendingIntent.getActivity(
 
-        val notification = NotificationCompat.Builder(
-            context,
-            channelId
-        )
-            .setSmallIcon(R.mipmap.ic_launcher)
-            .setContentTitle("HabitTrack")
-            .setContentText(
-                "No olvides completar tus hábitos hoy"
+                context,
+
+                0,
+
+                openIntent,
+
+                PendingIntent.FLAG_IMMUTABLE
             )
-            .setContentIntent(pendingIntent)
-            .setAutoCancel(true)
-            .build()
+
+        val notification =
+            NotificationCompat.Builder(
+                context,
+                channelId
+            )
+
+                .setSmallIcon(R.mipmap.ic_launcher)
+
+                .setContentTitle("HabitTrack")
+
+                .setContentText(reminderTitle)
+
+                .setContentIntent(pendingIntent)
+
+                .setAutoCancel(true)
+
+                .build()
 
         if (
-            androidx.core.app.ActivityCompat.checkSelfPermission(
-                context,
-                android.Manifest.permission.POST_NOTIFICATIONS
-            ) == android.content.pm.PackageManager.PERMISSION_GRANTED
+
+            androidx.core.app.ActivityCompat
+                .checkSelfPermission(
+
+                    context,
+
+                    android.Manifest.permission
+                        .POST_NOTIFICATIONS
+
+                ) == android.content.pm
+                .PackageManager.PERMISSION_GRANTED
         ) {
 
             NotificationManagerCompat
                 .from(context)
-                .notify(1, notification)
+                .notify(
+
+                    reminderTitle.hashCode(),
+
+                    notification
+                )
         }
     }
 }
