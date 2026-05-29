@@ -31,11 +31,11 @@ class NotificationReceiver : BroadcastReceiver() {
 
         val notification = NotificationCompat.Builder(context, "habit_channel")
             .setSmallIcon(R.mipmap.ic_launcher)
-            .setContentTitle("⏰ Recordatorio: $reminderTitle")
-            .setContentText("Es hora de cumplir tu hábito. ¡Tú puedes!")
+            .setContentTitle("\u23F0 Recordatorio: $reminderTitle")
+            .setContentText("Es hora de cumplir tu h\u00e1bito. \u00a1T\u00fa puedes!")
             .setStyle(
                 NotificationCompat.BigTextStyle()
-                    .bigText("Es hora de cumplir tu hábito.\n🕐 $hora — ¡No lo dejes para después!")
+                    .bigText("Es hora de cumplir tu h\u00e1bito.\n\uD83D\uDD50 $hora \u2014 \u00a1No lo dejes para despu\u00e9s!")
                     .setSummaryText("HabitTrack")
             )
             .setPriority(NotificationCompat.PRIORITY_HIGH)
