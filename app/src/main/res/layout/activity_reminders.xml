@@ -5,25 +5,57 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="#F5F5F5">
 
-    <Button
-        android:id="@+id/btnAddReminder"
+    <!-- Header -->
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Agregar recordatorio"
-        android:layout_margin="16dp"/>
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:background="#FFFFFF"
+        android:paddingHorizontal="16dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="16dp"
+        android:elevation="2dp">
 
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Recordatorios"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="#1A1A2E"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnAddReminder"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:text="+ Agregar"
+            android:textColor="#FFFFFF"
+            android:textSize="13sp"
+            app:backgroundTint="#7C4DFF"
+            app:cornerRadius="20dp"/>
+
+    </LinearLayout>
+
+    <!-- Lista -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerReminders"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"/>
+        android:layout_weight="1"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:clipToPadding="false"/>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="#FFFFFF"
         app:menu="@menu/bottom_menu"/>
 
 </LinearLayout>

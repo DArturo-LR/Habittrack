@@ -1,50 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout
+<androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:padding="16dp"
-    android:layout_marginBottom="10dp"
-    android:background="#EEEEEE">
+    android:layout_marginHorizontal="16dp"
+    android:layout_marginVertical="6dp"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="2dp"
+    app:cardBackgroundColor="#FFFFFF">
 
-    <TextView
-        android:id="@+id/tvHabitName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/habit"
-        android:textSize="20sp"
-        android:textStyle="bold"/>
-
-    <TextView
-        android:id="@+id/tvCategory"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/category"/>
-
-    <TextView
-        android:id="@+id/tvProgress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="0 / 5"
-        android:textSize="16sp"
-        android:paddingTop="6dp"/>
-
-    <ProgressBar
-        android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyleHorizontal"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:max="100"
-        android:progress="0"
-        android:layout_marginTop="8dp"/>
+        android:orientation="vertical"
+        android:padding="16dp">
 
-    <Button
-        android:id="@+id/btnCompleteDay"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/complete_day"
-        android:layout_marginTop="10dp"/>
+        <!-- Fila superior: nombre + badge categoría -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
 
-</LinearLayout>
+            <TextView
+                android:id="@+id/tvHabitName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/habit"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                android:textColor="#1A1A2E"/>
+
+            <TextView
+                android:id="@+id/tvCategory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/category"
+                android:textSize="11sp"
+                android:textColor="#7C4DFF"
+                android:background="@drawable/badge_category"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="3dp"/>
+
+        </LinearLayout>
+
+        <!-- Progreso texto -->
+        <TextView
+            android:id="@+id/tvProgress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0 / 5 días"
+            android:textSize="13sp"
+            android:textColor="#888888"
+            android:layout_marginTop="10dp"/>
+
+        <!-- Barra de progreso -->
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="8dp"
+            android:max="100"
+            android:progress="0"
+            android:progressTint="#7C4DFF"
+            android:progressBackgroundTint="#E8E8E8"
+            android:layout_marginTop="6dp"/>
+
+        <!-- Botón completar -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnCompleteDay"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:text="@string/complete_day"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            android:layout_marginTop="14dp"
+            app:backgroundTint="#7C4DFF"
+            app:cornerRadius="12dp"/>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

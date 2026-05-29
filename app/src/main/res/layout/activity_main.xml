@@ -5,72 +5,116 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="#F5F5F5">
 
-    <TextView
-        android:id="@+id/tvTitle"
+    <!-- Header -->
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/your_habits"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:padding="16dp"
-        android:textColor="@android:color/black" />
+        android:orientation="vertical"
+        android:background="#FFFFFF"
+        android:paddingHorizontal="16dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="12dp"
+        android:elevation="2dp">
 
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/your_habits"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="#1A1A2E"/>
+
+        <!-- Filtros de categoría -->
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="none"
+            android:layout_marginTop="12dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btnTodos"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:text="@string/all"
+                    android:textSize="12sp"
+                    android:layout_marginEnd="8dp"
+                    app:strokeColor="#7C4DFF"
+                    app:cornerRadius="20dp"/>
+
+                <Button
+                    android:id="@+id/btnSalud"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:text="@string/health"
+                    android:textSize="12sp"
+                    android:layout_marginEnd="8dp"
+                    app:strokeColor="#7C4DFF"
+                    app:cornerRadius="20dp"/>
+
+                <Button
+                    android:id="@+id/btnEstudio"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:text="@string/study"
+                    android:textSize="12sp"
+                    android:layout_marginEnd="8dp"
+                    app:strokeColor="#7C4DFF"
+                    app:cornerRadius="20dp"/>
+
+                <Button
+                    android:id="@+id/btnPasatiempo"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:text="@string/hobby"
+                    android:textSize="12sp"
+                    android:layout_marginEnd="8dp"
+                    app:strokeColor="#7C4DFF"
+                    app:cornerRadius="20dp"/>
+
+                <Button
+                    android:id="@+id/btnOtros"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:text="@string/others"
+                    android:textSize="12sp"
+                    app:strokeColor="#7C4DFF"
+                    app:cornerRadius="20dp"/>
+
+            </LinearLayout>
+
+        </HorizontalScrollView>
+
+    </LinearLayout>
+
+    <!-- Lista de hábitos -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerHabits"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1" />
-
-    <HorizontalScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="8dp">
-
-            <Button
-                android:id="@+id/btnTodos"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/all"/>
-
-            <Button
-                android:id="@+id/btnSalud"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/health"/>
-
-            <Button
-                android:id="@+id/btnEstudio"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/study"/>
-
-            <Button
-                android:id="@+id/btnPasatiempo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/hobby"/>
-
-            <Button
-                android:id="@+id/btnOtros"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/others"/>
-
-        </LinearLayout>
-
-    </HorizontalScrollView>
+        android:layout_weight="1"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:clipToPadding="false"/>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:menu="@menu/bottom_menu" />
+        android:background="#FFFFFF"
+        app:menu="@menu/bottom_menu"/>
 
 </LinearLayout>

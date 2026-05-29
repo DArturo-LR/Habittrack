@@ -23,12 +23,25 @@ class NotificationReceiver : BroadcastReceiver() {
             context, 0, openIntent, PendingIntent.FLAG_IMMUTABLE
         )
 
+        val hora = String.format(
+            "%02d:%02d",
+            Calendar.getInstance().get(Calendar.HOUR_OF_DAY),
+            Calendar.getInstance().get(Calendar.MINUTE)
+        )
+
         val notification = NotificationCompat.Builder(context, "habit_channel")
             .setSmallIcon(R.mipmap.ic_launcher)
-            .setContentTitle("HabitTrack")
-            .setContentText(reminderTitle)
+            .setContentTitle("⏰ Recordatorio: $reminderTitle")
+            .setContentText("Es hora de cumplir tu hábito. ¡Tú puedes!")
+            .setStyle(
+                NotificationCompat.BigTextStyle()
+                    .bigText("Es hora de cumplir tu hábito.\n🕐 $hora — ¡No lo dejes para después!")
+                    .setSummaryText("HabitTrack")
+            )
+            .setPriority(NotificationCompat.PRIORITY_HIGH)
             .setContentIntent(pendingIntent)
             .setAutoCancel(true)
+            .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
             .build()
 
         if (

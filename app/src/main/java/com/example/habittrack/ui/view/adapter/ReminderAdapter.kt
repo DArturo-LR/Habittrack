@@ -58,38 +58,30 @@ class ReminderAdapter(
         holder: ReminderViewHolder,
         position: Int
     ) {
-
         val reminder = reminders[position]
 
         holder.tvTitle.text = reminder.title
 
-        holder.tvTime.text =
-            "${reminder.hour}:${reminder.minute}"
+        // Fix: formato correcto HH:MM con ceros a la izquierda
+        holder.tvTime.text = String.format("%02d:%02d", reminder.hour, reminder.minute)
 
-        holder.switchReminder.isChecked =
-            reminder.enabled
+        holder.switchReminder.isChecked = reminder.enabled
 
-        holder.switchReminder.setOnCheckedChangeListener {
-                _, isChecked ->
-
+        holder.switchReminder.setOnCheckedChangeListener { _, isChecked ->
             onToggle(reminder, isChecked)
         }
 
         holder.btnEdit.setOnClickListener {
-
             onEdit(reminder)
         }
 
         holder.btnDelete.setOnClickListener {
-
             onDelete(reminder)
         }
     }
 
     fun updateData(newReminders: List<Reminder>) {
-
         reminders = newReminders
-
         notifyDataSetChanged()
     }
 }
