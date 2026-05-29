@@ -1,0 +1,281 @@
+package com.example.habittrack.ui.view
+
+import android.content.Intent
+import android.os.Bundle
+import android.widget.Button
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.habittrack.R
+import com.example.habittrack.data.model.Habit
+import com.example.habittrack.ui.view.adapter.HabitAdapter
+import com.example.habittrack.ui.viewmodel.HabitViewModel
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
+import com.example.habittrack.ui.notification.NotificationHelper
+import android.Manifest
+import android.content.pm.PackageManager
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
+import kotlin.jvm.java
+
+class MainActivity : AppCompatActivity() {
+
+    private lateinit var viewModel: HabitViewModel
+
+    private lateinit var adapter: HabitAdapter
+
+    private var allHabits = listOf<Habit>()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+
+        super.onCreate(savedInstanceState)
+
+        setContentView(R.layout.activity_main)
+        val sharedPreferences =
+            getSharedPreferences("reminders", MODE_PRIVATE)
+
+        val savedHour =
+            sharedPreferences.getInt("hour", 20)
+
+        val savedMinute =
+            sharedPreferences.getInt("minute", 0)
+
+        if (
+            ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.POST_NOTIFICATIONS
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+
+            ActivityCompat.requestPermissions(
+                this,
+                arrayOf(Manifest.permission.POST_NOTIFICATIONS),
+                1
+            )
+        }
+
+        viewModel =
+            ViewModelProvider(this)[HabitViewModel::class.java]
+
+        val recyclerView =
+            findViewById<RecyclerView>(R.id.recyclerHabits)
+
+        adapter = HabitAdapter(
+
+            emptyList(),
+
+            { habit ->
+
+                val today = getTodayDate()
+
+                if (
+                    habit.progress < habit.goal &&
+                    habit.lastCompletedDate != today
+                ) {
+
+                    val updatedHabit = habit.copy(
+
+                        progress = habit.progress + 1,
+
+                        lastCompletedDate = today,
+
+                        streak = habit.streak + 1
+                    )
+
+                    viewModel.updateProgress(updatedHabit)
+
+                    allHabits = allHabits.map {
+
+                        if (it.id == updatedHabit.id) {
+
+                            updatedHabit
+
+                        } else {
+
+                            it
+                        }
+                    }
+
+                    adapter.updateData(allHabits)
+                }
+            },
+
+            { habit ->
+
+                val options = arrayOf("Editar", "Eliminar")
+
+                androidx.appcompat.app.AlertDialog.Builder(this)
+                    .setTitle(habit.name)
+                    .setItems(options) { _, which ->
+
+                        when (which) {
+
+                            0 -> {
+
+                                val intent = Intent(
+                                    this,
+                                    EditHabitActivity::class.java
+                                )
+
+                                intent.putExtra("habitId", habit.id)
+
+                                startActivity(intent)
+                            }
+
+                            1 -> {
+
+                                viewModel.deleteHabit(habit.id)
+
+                                viewModel.loadHabits()
+                            }
+                        }
+                    }
+                    .show()
+            }
+        )
+
+        recyclerView.layoutManager =
+            LinearLayoutManager(this)
+
+        recyclerView.adapter = adapter
+
+        viewModel.habits.observe(this) { habits ->
+
+            allHabits = habits
+
+            adapter.updateData(habits)
+        }
+
+        viewModel.loadHabits()
+
+        findViewById<Button>(R.id.btnTodos)
+            .setOnClickListener {
+
+                adapter.updateData(allHabits)
+            }
+
+        findViewById<Button>(R.id.btnSalud)
+            .setOnClickListener {
+
+                adapter.updateData(
+
+                    allHabits.filter {
+
+                        it.category == "Salud"
+                    }
+                )
+            }
+
+        findViewById<Button>(R.id.btnEstudio)
+            .setOnClickListener {
+
+                adapter.updateData(
+
+                    allHabits.filter {
+
+                        it.category == "Estudio"
+                    }
+                )
+            }
+
+        findViewById<Button>(R.id.btnPasatiempo)
+            .setOnClickListener {
+
+                adapter.updateData(
+
+                    allHabits.filter {
+
+                        it.category == "Pasatiempo"
+                    }
+                )
+            }
+
+        findViewById<Button>(R.id.btnOtros)
+            .setOnClickListener {
+
+                adapter.updateData(
+
+                    allHabits.filter {
+
+                        it.category == "Otros"
+                    }
+                )
+            }
+
+        val bottomNav =
+            findViewById<BottomNavigationView>(
+                R.id.bottomNavigation
+            )
+
+        bottomNav.selectedItemId = R.id.nav_progreso
+
+        bottomNav.setOnItemSelectedListener {
+
+            when (it.itemId) {
+
+                R.id.nav_add -> {
+
+                    startActivity(
+                        Intent(this, AddHabitActivity::class.java)
+                    )
+
+                    true
+                }
+
+                R.id.nav_progreso -> {
+
+                    true
+                }
+
+                R.id.nav_stats -> {
+
+                    startActivity(
+                        Intent(this, StatsActivity::class.java)
+                    )
+
+                    true
+                }
+
+                R.id.nav_profile -> {
+
+                    startActivity(
+                        Intent(this, ProfileActivity::class.java)
+                    )
+
+                    true
+                }
+
+                R.id.nav_reminders -> {
+
+                    startActivity(
+                        Intent(this, RemindersActivity::class.java)
+                    )
+
+                    true
+                }
+
+                else -> true
+            }
+        }
+    }
+
+    override fun onResume() {
+
+        super.onResume()
+
+        viewModel.loadHabits()
+    }
+    private fun getTodayDate(): String {
+
+        val sdf = SimpleDateFormat(
+            "yyyy-MM-dd",
+            Locale.getDefault()
+        )
+
+        return sdf.format(Date())
+    }
+}

@@ -1,0 +1,64 @@
+<resources>
+
+    <string name="app_name">HabitTrack</string>
+
+    <string name="login">Iniciar sesión</string>
+    <string name="register">Registrarse</string>
+    <string name="email">Correo electrónico</string>
+    <string name="password">Contraseña</string>
+
+    <string name="user">Usuario</string>
+    <string name="logout">Cerrar sesión</string>
+
+    <string name="settings">Configuraciones</string>
+    <string name="language">Idioma</string>
+
+    <string name="total_habits">Total hábitos</string>
+    <string name="best_streak">Mejor racha</string>
+
+    <string name="habit_name">Nombre del hábito</string>
+    <string name="goal_days">Meta en días</string>
+    <string name="category">Categoría</string>
+
+    <string name="health">Salud</string>
+    <string name="study">Estudio</string>
+    <string name="hobby">Pasatiempo</string>
+    <string name="others">Otros</string>
+
+    <string name="save_habit">Guardar hábito</string>
+
+    <string name="progress">Progreso</string>
+    <string name="stats">Estadísticas</string>
+    <string name="add">Añadir</string>
+    <string name="alerts">Alertas</string>
+    <string name="profile">Perfil</string>
+
+    <string name="complete_day">Completar día</string>
+    <string name="completed">Completado</string>
+    <string name="completed_today">Ya completado hoy</string>
+
+    <!-- Stats -->
+    <string name="statistics">Estadísticas</string>
+
+    <!-- Edit -->
+    <string name="name">Nombre</string>
+    <string name="goal">Meta</string>
+    <string name="save_changes">Guardar cambios</string>
+
+    <string name="your_habits">Tus hábitos</string>
+    <string name="all">Todos</string>
+    <string name="habit">Hábito</string>
+
+    <string name="app_title">HabitTrack</string>
+    <string name="email_hint">Correo</string>
+    <string name="password_hint">Contraseña</string>
+    <string name="login_button">Entrar</string>
+    <string name="register_button">Registrarse</string>
+    <string name="logo_description">Logo HabitTrack</string>
+
+    <string name="reminder_name">Nombre del recordatorio</string>
+    <string name="new_reminder">Nuevo recordatorio</string>
+    <string name="continue_text">Continuar</string>
+    <string name="cancel">Cancelar</string>
+
+</resources>
