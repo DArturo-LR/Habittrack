@@ -2,33 +2,38 @@ package com.example.habittrack.ui.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.habittrack.data.model.Habit
-import com.example.habittrack.data.repository.HabitRepository
+import com.example.habittrack.domain.model.Habit
+import com.example.habittrack.domain.usecase.habit.*
 
-class HabitViewModel : ViewModel() {
-
-    private val repository = HabitRepository()
+class HabitViewModel(
+    private val getHabitsUseCase: GetHabitsUseCase,
+    private val addHabitUseCase: AddHabitUseCase,
+    private val deleteHabitUseCase: DeleteHabitUseCase,
+    private val updateHabitUseCase: UpdateHabitUseCase,
+    private val updateHabitProgressUseCase: UpdateHabitProgressUseCase
+) : ViewModel() {
 
     val habits = MutableLiveData<List<Habit>>()
 
     fun addHabit(habit: Habit) {
-        repository.addHabit(habit)
+        addHabitUseCase(habit)
     }
 
     fun loadHabits() {
-        repository.getHabits(habits)
+        getHabitsUseCase { 
+            habits.value = it
+        }
     }
+
     fun updateProgress(habit: Habit) {
-
-        repository.updateHabitProgress(habit)
+        updateHabitProgressUseCase(habit)
     }
-    fun deleteHabit(habitId: String) {
 
-        repository.deleteHabit(habitId)
+    fun deleteHabit(habitId: String) {
+        deleteHabitUseCase(habitId)
     }
 
     fun updateHabit(habit: Habit) {
-
-        repository.updateHabit(habit)
+        updateHabitUseCase(habit)
     }
 }
