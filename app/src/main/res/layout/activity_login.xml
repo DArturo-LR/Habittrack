@@ -1,67 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:background="#70FFE7"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg_gradient_green"
     android:orientation="vertical"
-    android:gravity="top|center_horizontal"
+    android:gravity="center_horizontal"
     android:padding="24dp">
 
     <ImageView
-        android:src="@drawable/buenos_habitos_diarios"
-        android:contentDescription="@string/logo_description"
-        android:layout_width="350dp"
-        android:layout_height="350dp"
-        android:layout_marginBottom="10dp"
-        android:layout_gravity="center_horizontal"/>
+        android:id="@+id/ivLogo"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginBottom="20dp"
+        app:srcCompat="@drawable/logo"
+        android:contentDescription="@string/logo_description" />
 
     <TextView
-        android:text="@string/app_title"
-        android:textSize="28sp"
-        android:textStyle="bold"
-        android:textColor="@color/purple"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:layout_gravity="center_horizontal"/>
+        android:text="@string/app_title"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:layout_marginBottom="40dp"
+        android:fontFamily="sans-serif-medium"/>
 
-    <EditText
-        android:id="@+id/etEmail"
-        android:backgroundTint="@color/purple"
-        android:padding="12dp"
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/email_hint"
-        android:inputType="textEmailAddress" />
+        app:cardCornerRadius="24dp"
+        app:cardElevation="12dp"
+        android:layout_margin="4dp">
 
-    <EditText
-        android:id="@+id/etPassword"
-        android:backgroundTint="@color/purple"
-        android:padding="12dp"
-        android:layout_marginTop="12dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/password_hint"
-        android:inputType="textPassword" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="28dp">
 
-    <Button
-        android:id="@+id/btnLogin"
-        android:textColor="#FFFFFF"
-        android:backgroundTint="@color/purple"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="@string/login_button" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bienvenido"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:textColor="#333333"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="24dp"/>
 
-    <Button
-        android:id="@+id/btnRegister"
-        android:textColor="#FFFFFF"
-        android:backgroundTint="@color/purple"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="@string/register_button" />
+            <EditText
+                android:id="@+id/etEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/email_hint"
+                android:inputType="textEmailAddress"
+                android:padding="14dp"
+                android:background="@android:color/transparent"
+                android:drawableStart="@android:drawable/ic_dialog_email"
+                android:drawablePadding="12dp"
+                android:textColor="#333333"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#EEEEEE"
+                android:layout_marginBottom="16dp"/>
+
+            <EditText
+                android:id="@+id/etPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/password_hint"
+                android:inputType="textPassword"
+                android:padding="14dp"
+                android:background="@android:color/transparent"
+                android:drawableStart="@android:drawable/ic_lock_idle_lock"
+                android:drawablePadding="12dp"
+                android:textColor="#333333"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#EEEEEE"
+                android:layout_marginBottom="24dp"/>
+
+            <Button
+                android:id="@+id/btnLogin"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:text="ENTRAR"
+                android:textAllCaps="true"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:backgroundTint="#2E7D32"
+                android:textColor="@color/white"
+                app:cornerRadius="16dp" />
+
+            <Button
+                android:id="@+id/btnRegister"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="¿No tienes cuenta? Regístrate"
+                android:textAllCaps="false"
+                android:backgroundTint="@android:color/transparent"
+                android:textColor="#2E7D32"
+                style="@style/Widget.MaterialComponents.Button.TextButton" />
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
 
 </LinearLayout>

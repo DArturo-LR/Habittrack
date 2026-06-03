@@ -1,18 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <style name="Theme.Habittrack" parent="Theme.MaterialComponents.Light.NoActionBar">
-        <item name="colorPrimary">#7C4DFF</item>
-        <item name="colorPrimaryVariant">#5E35B1</item>
-        <item name="colorOnPrimary">#FFFFFF</item>
-        <item name="colorSecondary">#EDE7F6</item>
-        <item name="colorOnSecondary">#7C4DFF</item>
-        <item name="android:windowBackground">#F5F5F5</item>
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/primary_green</item>
+        <item name="colorPrimaryVariant">@color/primary_dark_green</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/aquamarine</item>
+        <item name="colorOnSecondary">@color/primary_dark_green</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">@color/white</item>
+        <item name="android:windowLightStatusBar">true</item>
+
+        <item name="android:windowBackground">@color/light_green_bg</item>
         <item name="bottomNavigationStyle">@style/BottomNavStyle</item>
     </style>
+
     <style name="BottomNavStyle" parent="Widget.MaterialComponents.BottomNavigationView">
-        <item name="android:background">#FFFFFF</item>
+        <item name="android:background">@color/white</item>
         <item name="itemIconTint">@color/bottom_nav_colors</item>
         <item name="itemTextColor">@color/bottom_nav_colors</item>
-        <item name="elevation">8dp</item>
+        <item name="elevation">16dp</item>
     </style>
 </resources>

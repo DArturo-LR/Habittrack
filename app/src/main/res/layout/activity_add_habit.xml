@@ -1,84 +1,155 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/light_green_bg">
 
-    <LinearLayout
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="vertical"
-        android:padding="20dp">
+        android:layout_weight="1">
 
-        <EditText
-            android:id="@+id/etName"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/habit_name"/>
+            android:orientation="vertical"
+            android:padding="24dp">
 
-        <EditText
-            android:id="@+id/etGoal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/goal_days"
-            android:inputType="number"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/category"
-            android:textSize="18sp"
-            android:paddingTop="16dp"
-            android:paddingBottom="8dp"/>
-
-        <RadioGroup
-            android:id="@+id/radioGroupCategory"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <RadioButton
-                android:id="@+id/rbSalud"
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/health"/>
+                android:text="Nuevo Hábito"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                android:textColor="@color/primary_dark_green"
+                android:layout_marginBottom="24dp"
+                android:fontFamily="sans-serif-black"/>
 
-            <RadioButton
-                android:id="@+id/rbEstudio"
-                android:layout_width="wrap_content"
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/study"/>
+                app:cardCornerRadius="24dp"
+                app:cardElevation="4dp">
 
-            <RadioButton
-                android:id="@+id/rbPasatiempo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/hobby"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="24dp">
 
-            <RadioButton
-                android:id="@+id/rbOtros"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/others"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="¿Qué quieres lograr?"
+                        android:textStyle="bold"
+                        android:textColor="@color/text_primary"
+                        android:layout_marginBottom="8dp"/>
 
-        </RadioGroup>
+                    <EditText
+                        android:id="@+id/etName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Ej: Caminar 30 min"
+                        android:background="@drawable/edit_text_rounded_bg"
+                        android:padding="16dp"
+                        android:layout_marginBottom="20dp"/>
 
-        <Button
-            android:id="@+id/btnSave"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/save_habit"
-            android:layout_marginTop="20dp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Meta de días"
+                        android:textStyle="bold"
+                        android:textColor="@color/text_primary"
+                        android:layout_marginBottom="8dp"/>
 
-    </LinearLayout>
+                    <EditText
+                        android:id="@+id/etGoal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Ej: 21"
+                        android:inputType="number"
+                        android:background="@drawable/edit_text_rounded_bg"
+                        android:padding="16dp"
+                        android:layout_marginBottom="24dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Categoría"
+                        android:textStyle="bold"
+                        android:textColor="@color/text_primary"
+                        android:layout_marginBottom="12dp"/>
+
+                    <RadioGroup
+                        android:id="@+id/radioGroupCategory"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <RadioButton
+                            android:id="@+id/rbSalud"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/health"
+                            android:buttonTint="@color/primary_green"
+                            android:padding="12dp"
+                            android:layout_marginBottom="4dp"/>
+
+                        <RadioButton
+                            android:id="@+id/rbEstudio"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/study"
+                            android:buttonTint="@color/primary_green"
+                            android:padding="12dp"
+                            android:layout_marginBottom="4dp"/>
+
+                        <RadioButton
+                            android:id="@+id/rbPasatiempo"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/hobby"
+                            android:buttonTint="@color/primary_green"
+                            android:padding="12dp"
+                            android:layout_marginBottom="4dp"/>
+
+                        <RadioButton
+                            android:id="@+id/rbOtros"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/others"
+                            android:buttonTint="@color/primary_green"
+                            android:padding="12dp"
+                            android:layout_marginBottom="4dp"/>
+
+                    </RadioGroup>
+
+                    <Button
+                        android:id="@+id/btnSave"
+                        android:layout_width="match_parent"
+                        android:layout_height="56dp"
+                        android:text="GUARDAR HÁBITO"
+                        android:textStyle="bold"
+                        android:layout_marginTop="32dp"
+                        app:backgroundTint="@color/aquamarine_dark"
+                        app:cornerRadius="16dp"/>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/white"
+        app:itemIconTint="@color/primary_dark_green"
+        app:itemTextColor="@color/primary_dark_green"
         app:menu="@menu/bottom_menu"/>
 
 </LinearLayout>

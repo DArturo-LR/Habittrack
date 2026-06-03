@@ -1,131 +1,197 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/light_green_bg">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:orientation="vertical"
-        android:gravity="center"
         android:padding="24dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/user"
-            android:textSize="24sp"
-            android:textStyle="bold"/>
+            android:text="Mi Perfil"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:textColor="@color/primary_dark_green"
+            android:layout_marginBottom="24dp"
+            android:fontFamily="sans-serif-black"/>
 
-        <TextView
-            android:id="@+id/tvEmail"
-            android:layout_width="wrap_content"
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
-            android:layout_marginTop="12dp"/>
+            app:cardCornerRadius="24dp"
+            app:cardElevation="4dp"
+            android:layout_marginBottom="24dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="24dp">
+
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@android:drawable/ic_menu_myplaces"
+                    app:tint="@color/primary_green"
+                    android:layout_marginBottom="12dp"/>
+
+                <TextView
+                    android:id="@+id/tvEmail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/text_primary"
+                    android:text="usuario@email.com"/>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="32dp">
+            android:layout_marginBottom="24dp">
 
-            <LinearLayout
+            <androidx.cardview.widget.CardView
                 android:layout_width="0dp"
                 android:layout_height="120dp"
                 android:layout_weight="1"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:background="@android:color/darker_gray"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="2dp"
                 android:layout_marginEnd="8dp">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/total_habits"
-                    android:textStyle="bold"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="center">
 
-                <TextView
-                    android:id="@+id/tvTotalHabits"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="0"
-                    android:textSize="32sp"
-                    android:textStyle="bold"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Hábitos"
+                        android:textSize="12sp"
+                        android:textAllCaps="true"
+                        android:textColor="@color/text_secondary"/>
 
-            </LinearLayout>
+                    <TextView
+                        android:id="@+id/tvTotalHabits"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:textSize="32sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/primary_green"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
 
-            <LinearLayout
+            <androidx.cardview.widget.CardView
                 android:layout_width="0dp"
                 android:layout_height="120dp"
                 android:layout_weight="1"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:background="@android:color/darker_gray"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="2dp"
                 android:layout_marginStart="8dp">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/best_streak"
-                    android:textStyle="bold"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="center">
 
-                <TextView
-                    android:id="@+id/tvBestStreak"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="0"
-                    android:textSize="32sp"
-                    android:textStyle="bold"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Mejor Racha"
+                        android:textSize="12sp"
+                        android:textAllCaps="true"
+                        android:textColor="@color/text_secondary"/>
 
-            </LinearLayout>
+                    <TextView
+                        android:id="@+id/tvBestStreak"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:textSize="32sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/aquamarine_dark"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
 
         </LinearLayout>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/settings"
+            android:text="Ajustes"
             android:textStyle="bold"
             android:textSize="20sp"
-            android:layout_marginTop="24dp"/>
+            android:textColor="@color/text_primary"
+            android:layout_marginBottom="12dp"/>
 
-        <LinearLayout
-            android:id="@+id/layoutLanguage"
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="16dp"
-            android:layout_marginTop="12dp"
-            android:background="@android:color/darker_gray">
+            app:cardCornerRadius="16dp"
+            app:cardElevation="2dp">
 
-            <TextView
-                android:layout_width="0dp"
+            <LinearLayout
+                android:id="@+id/layoutLanguage"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/language"
-                android:textSize="18sp"/>
+                android:orientation="horizontal"
+                android:padding="16dp"
+                android:gravity="center_vertical"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="?attr/selectableItemBackground">
 
-            <TextView
-                android:id="@+id/tvCurrentLanguage"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Español"
-                android:textStyle="bold"/>
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@android:drawable/ic_menu_mapmode"
+                    app:tint="@color/primary_green"
+                    android:layout_marginEnd="12dp"/>
 
-        </LinearLayout>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Idioma"
+                    android:textSize="16sp"
+                    android:textColor="@color/text_primary"/>
+
+                <TextView
+                    android:id="@+id/tvCurrentLanguage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Español"
+                    android:textStyle="bold"
+                    android:textColor="@color/primary_green"/>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
 
         <Button
             android:id="@+id/btnLogout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/logout"
-            android:layout_marginTop="32dp"/>
+            android:layout_height="56dp"
+            android:text="Cerrar Sesión"
+            android:textStyle="bold"
+            android:layout_marginTop="32dp"
+            app:backgroundTint="#FF5252"
+            app:cornerRadius="16dp"/>
 
     </LinearLayout>
 
@@ -133,6 +199,9 @@
         android:id="@+id/bottomNavigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/white"
+        app:itemIconTint="@color/primary_dark_green"
+        app:itemTextColor="@color/primary_dark_green"
         app:menu="@menu/bottom_menu"/>
 
 </LinearLayout>
