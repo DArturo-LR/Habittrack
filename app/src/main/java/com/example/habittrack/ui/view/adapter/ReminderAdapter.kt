@@ -4,11 +4,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.Switch
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.habittrack.R
 import com.example.habittrack.domain.model.Reminder
+import com.google.android.material.switchmaterial.SwitchMaterial
 
 class ReminderAdapter(
     private var reminders: List<Reminder>,
@@ -20,7 +20,7 @@ class ReminderAdapter(
     class ReminderViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val tvTitle: TextView = view.findViewById(R.id.tvReminderTitle)
         val tvTime: TextView = view.findViewById(R.id.tvReminderTime)
-        val switchReminder: Switch = view.findViewById(R.id.switchReminder)
+        val switchReminder: SwitchMaterial = view.findViewById(R.id.switchReminder)
         val btnEdit: Button = view.findViewById(R.id.btnEditReminder)
         val btnDelete: Button = view.findViewById(R.id.btnDeleteReminder)
     }
@@ -37,6 +37,9 @@ class ReminderAdapter(
         val reminder = reminders[position]
         holder.tvTitle.text = reminder.title
         holder.tvTime.text = String.format("%02d:%02d", reminder.hour, reminder.minute)
+        
+        // Reset listener to avoid triggering it when setting isChecked
+        holder.switchReminder.setOnCheckedChangeListener(null)
         holder.switchReminder.isChecked = reminder.enabled
 
         holder.switchReminder.setOnCheckedChangeListener { _, isChecked ->
